@@ -38,9 +38,11 @@ ui <- fluidPage(
       sliderInput("corr_n", min = 20, max = 500),
       actionButton("corr_sample","Get a Sample!")
     ),
+    
+    #Code for Main Panel with plot and correlation guessing activity
     mainPanel(
-      "Add a plotOutput here for the scatter plot!",
-      conditionalPanel("input.corr_sample", #only show if a sample has been taken
+      plotOutput("corr_plot"),
+      conditionalPanel("input.corr_sample > 0",
                        h2("Guess the correlation!"),
                        column(6, 
                               numericInput("corr_guess",
