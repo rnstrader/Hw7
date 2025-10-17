@@ -23,8 +23,16 @@ ui <- fluidPage(
       
       
       br(),
-      "Place your radio buttons here! One radio button for each variable we may subset on. Set the internal IDs for these to be hhl_corr, fs_corr, and schl_corr.",
-      "Notice that you can use choiceNames and choiceValues to have different values show vs the values you use internally for comparisons. There are 'internal' values already used in the server file - the first large commented section - so you should set the internal values to match those!",
+      
+      #Household Language Buttons
+      radioButtons("hhl_corr", "Household Language", choiceNames = c("All", "English only", "Spanish", "Other"), choiceValues = c("all", "english", "spanish", "other")), 
+      
+      #Food Stamps Buttons
+      radioButtons("fs_corr", "SNAP Recipient", choiceNames = c("All", "Yes", "No"), choiceValues = c("all", "yes", "no")), 
+      
+      #Education Buttons
+      radioButtons("schl_corr", "Educational Attainment", choiceNames = c("All", "High School not Completed", "High School or GED", "College Degree"), choiceValues = c("all", "no_hs", "hs", "coll")),
+
       h2("Select a Sample Size"),
       "Put your slider for sample size here. Give this an ID of corr_n.",
       actionButton("corr_sample","Get a Sample!")
