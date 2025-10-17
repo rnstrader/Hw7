@@ -33,8 +33,9 @@ ui <- fluidPage(
       #Education Buttons
       radioButtons("schl_corr", "Educational Attainment", choiceNames = c("All", "High School not Completed", "High School or GED", "College Degree"), choiceValues = c("all", "no_hs", "hs", "coll")),
 
+      #Sample Size Slider
       h2("Select a Sample Size"),
-      "Put your slider for sample size here. Give this an ID of corr_n.",
+      sliderInput("corr_n", min = 20, max = 500),
       actionButton("corr_sample","Get a Sample!")
     ),
     mainPanel(
