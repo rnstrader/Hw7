@@ -99,8 +99,9 @@ server <- function(input, output, session) {
     sample_corr <- reactiveValues(corr_data = NULL, corr_truth = NULL)
 
     
-    #Code to go in an observeEvent() to look for the action button (corr_sample)
+    #Code to look for the action button (corr_sample)
 
+    observeEvent(input$corr_sample, {
       if(input$hhl_corr == "all"){
         hhl_sub <- HHLvals
       } else if(input$hhl_corr == "english"){
@@ -153,15 +154,13 @@ server <- function(input, output, session) {
                       size = input$corr_n,
                       replace = TRUE,
                       prob = subsetted_data$PWGTP/sum(subsetted_data$PWGTP))
-      #***You now need to update the sample_corr reactive value object***
-      #the corr_data argument should be updated to be the subsetted_data[index,]
-      #the corr_truth argument should be updated to be the correlation between
-      #the two variables selected. This can be found with this code:
-      #cor(sample_corr$corr_data |> select(corr_vars))[1,2]
-    ###################################################################
-
-
-
+      
+      #updating the sample_corr reactive value object
+      sample_corr$corr_data <- subsetted_data[index, ]
+      sample_corr$corr_truth <- cor(sample_corr$corr_data |> select(corr_vars))[1,2]
+    })
+   
+    
     # #Create a renderPlot() object to output a scatter plot
     # #Use the code below to validate that data exists, (this goes in the renderPlot and you'll need 
     # #to install the shinyalert package if you don't have it) and then create the appropriate
