@@ -90,7 +90,7 @@ server <- function(input, output, session) {
         updateSelectizeInput(session,
                              "corr_x",
                              choices = choices,
-                             selected = corr_x)
+                             selected = ifelse(corr_x %in% choices, corr_x, choices[1]))
       }
     })
     
