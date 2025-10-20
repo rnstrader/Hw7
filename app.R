@@ -67,7 +67,7 @@ server <- function(input, output, session) {
     
     ##Correlation tab
     #This code makes sure the select boxes update so they can't select the same variable in both!
-    #first, update the 'y' selections available
+    #Preventing the input for x and y variable being identical
     observeEvent(input$corr_x, {
       corr_x <- input$corr_x
       corr_y <- input$corr_y
@@ -80,7 +80,7 @@ server <- function(input, output, session) {
                              selected = ifelse(corr_y %in% choices, corr_y, choices[1]))
       }
     })
-    #now, update the 'x' selections available
+   
     observeEvent(input$corr_y, {
       corr_x <- input$corr_x
       corr_y <- input$corr_y
