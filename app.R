@@ -65,7 +65,6 @@ my_sample <- readRDS("my_sample_temp.rds")
 server <- function(input, output, session) {
 
     
-    #################################################
     ##Correlation tab
     #This code makes sure the select boxes update so they can't select the same variable in both!
     #first, update the 'y' selections available
@@ -78,7 +77,7 @@ server <- function(input, output, session) {
         updateSelectizeInput(session,
                              "corr_y",
                              choices = choices,
-                             selected = corr_y)
+                             selected = ifelse(corr_y %in% choices, corr_y, choices[1]))
       }
     })
     #now, update the 'x' selections available
