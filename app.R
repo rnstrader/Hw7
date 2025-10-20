@@ -161,12 +161,13 @@ server <- function(input, output, session) {
     })
    
     
-    # #Create a renderPlot() object to output a scatter plot
+      #Create a renderPlot() object to output a scatter plot
     output$corr_plot <- renderPlot({
-    # #The code below validates that data exists
+      #The code below validates that data exists
       validate(
         need(!is.null(sample_corr$corr_data), "Please select your variables, subset, and click the 'Get a Sample!' button.")
       )
+      #code for plot
       ggplot(sample_corr$corr_data, aes_string(x = isolate(input$corr_x), y = isolate(input$corr_y))) +
         geom_point()
     })
