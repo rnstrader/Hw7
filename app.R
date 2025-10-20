@@ -35,7 +35,7 @@ ui <- fluidPage(
 
       #Sample Size Slider
       h2("Select a Sample Size"),
-      sliderInput("corr_n", min = 20, max = 500, value = 20),
+      sliderInput("corr_n", label = NULL, min = 20, max = 500, value = 20),
       actionButton("corr_sample","Get a Sample!")
     ),
     
