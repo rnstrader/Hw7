@@ -100,7 +100,6 @@ server <- function(input, output, session) {
 
     
     #Code to go in an observeEvent() to look for the action button (corr_sample)
-    #Note you can highlight and bulk comment/uncomment (ctrl+shift+c or similar on mac)
 
       if(input$hhl_corr == "all"){
         hhl_sub <- HHLvals
@@ -174,7 +173,7 @@ server <- function(input, output, session) {
     #     geom_point()
 
 
-    #This code does the correlation guessing game! Nothing to change here
+    #This code does the correlation guessing game!
     observeEvent(input$corr_submit, {
       close <- abs(input$corr_guess - sample_corr$corr_truth) <= .05
       if(close){
