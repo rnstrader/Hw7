@@ -99,8 +99,7 @@ server <- function(input, output, session) {
     sample_corr <- reactiveValues(corr_data = NULL, corr_truth = NULL)
 
     
-    #Uncomment the next large block of code to go in an
-    #observeEvent() to look for the action button (corr_sample)
+    #Code to go in an observeEvent() to look for the action button (corr_sample)
     #Note you can highlight and bulk comment/uncomment (ctrl+shift+c or similar on mac)
 
       if(input$hhl_corr == "all"){
